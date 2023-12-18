@@ -1,0 +1,27 @@
+
+    <body>
+        <div class="quiz-container" id="quiz">
+            <div *ngIf="!voted">
+                <div class="quiz-header">
+                    <h2 id="question">{{poll.question}}</h2>
+                    <ul *ngFor="let o of poll.options">
+                        <li>
+                            <input
+                                (change)="changeAnswer(o.id)"
+                                type="radio"
+                                name="answer"
+                                class="answer"
+                            />
+                            <span>{{o.description}}</span>
+                            <span> (vote : {{o.voteCount}})</span>
+                        </li>
+                    </ul>
+                </div>
+                <button [disabled]="selectedAnswer == 0" (click)="sendVote()">Submit</button>
+            </div>
+            <div *ngIf="voted">
+                <img src="https://media.istockphoto.com/id/496603666/fr/vectoriel/ic%C3%B4ne-de-d%C3%A9part-%C3%A0.jpg?s=612x612&w=0&k=20&c=-HsVLVbOyVSE1LzvgGt_6AlPewdXNKbDUQc69Ncqr1M=">
+                <h2 id="question">Voté</h2>
+            </div>
+        </div>
+    </body>
